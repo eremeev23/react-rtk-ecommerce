@@ -24,6 +24,19 @@ export const sliderItems = [
 
 export const categories = [
   {
-    
-  }
+    id: 1,
+    img: 'https://images.pexels.com/photos/8146448/pexels-photo-8146448.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    title: "Clothes",
+  },
+  {
+    id: 2,
+    img: 'https://images.pexels.com/photos/5306338/pexels-photo-5306338.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    title: "Accessories",
+  },
+  {
+    id: 3,
+    img: 'https://images.pexels.com/photos/1464625/pexels-photo-1464625.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+    title: "Shoes",
+  },
+
 ]
