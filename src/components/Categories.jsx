@@ -5,15 +5,15 @@ import { categories } from '../data'
 
 const Container = styled.div`
   display: flex;
-  padding: 10px;
   justify-content: space-between;
+  padding: 2px 0;
 `
 
 const Categories = () => {
   return (
     <Container>
-      {categories.map(item => (
-        <CategoryItem item={item}/>
+      {categories.map((item, id) => (
+        <CategoryItem item={item} key={id}/>
       ))}
     </Container>
   )

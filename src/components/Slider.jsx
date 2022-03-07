@@ -6,8 +6,8 @@ import { sliderItems } from '../data'
 
 const Container = styled.div`
   position: relative;
-  width: 100vw;
-  height: 90vh;
+  max-width: 100vw;
+  height: 46vw;
   display: flex;
   overflow: hidden;
 `
@@ -30,17 +30,17 @@ const Arrow = styled.div`
   z-index: 10;
 `
 const Wrapper = styled.div`
-  height: 90%;
+  height: 46vw;
   display: flex;
   transform: translateX(${props => props.slideIndex * -100}vw);
   transition: all 1.2s ease;
 `
 const Slide = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 46vw;
   display: flex;
   align-items: center;
-  background-color: #${props=>props.bg};
+  background-color: #${props => props.bg};
 `
 const ImageContainer = styled.div`
   flex: 1;
@@ -48,6 +48,7 @@ const ImageContainer = styled.div`
 `
 const Image = styled.img`
   height: 100%;
+  width: 62vw;
 `
 
 const InfoContainer = styled.div`
@@ -71,6 +72,12 @@ const Button = styled.button`
   cursor: pointer;
   border: 1px solid #000;
   border-radius: 4px;
+  transition: all .3s ease;
+  
+  &:hover {
+    background: #000;
+    color: #fff;
+  }
 `
 
 
@@ -92,15 +99,15 @@ const Slider = () => {
         <ArrowLeftOutlined/>
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map(item => (
-          <Slide bg={item.bg}> 
+        {sliderItems.map((item, id) => (
+          <Slide bg={item.bg} key={id}> 
             <ImageContainer>
               <Image src={item.img}/>
             </ImageContainer>
             <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>SHOW NOW</Button>
+              <Button>SHOP NOW</Button>
             </InfoContainer>
           </Slide>
         ))}
