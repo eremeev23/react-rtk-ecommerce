@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined';
 import SearchIcon from '@material-ui/icons/Search';
@@ -25,23 +26,31 @@ const Container = styled.div`
   margin: 5px;
   min-width: 280px;
   height: 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #fcf5f5;
 
   &:hover ${Info} {
     opacity: 1;
   }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
-const Circle = styled.div`
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-color: #fff;
-`
+// const Circle = styled.div`
+//   position: absolute;
+//   width: 200px;
+//   height: 200px;
+//   border-radius: 50%;
+//   background-color: #fff;
+// `
 
 const Image = styled.img`
   height: 75%;
@@ -69,19 +78,21 @@ const Icon = styled.div`
 const Product = ({item}) => {
     return (
         <Container>
-            <Circle />
-            <Image src={item.img}/>
-            <Info>
-                <Icon>
-                    <ShoppingCartIcon />
-                </Icon>
-                <Icon>
-                    <SearchIcon />
-                </Icon>
-                <Icon>
-                    <FavoriteBorderOutlinedIcon />
-                </Icon>
-            </Info>
+            <Link to="/product">
+                {/*<Circle />*/}
+                <Image src={item.img}/>
+                <Info>
+                    <Icon>
+                        <ShoppingCartIcon />
+                    </Icon>
+                    <Icon>
+                        <SearchIcon />
+                    </Icon>
+                    <Icon>
+                        <FavoriteBorderOutlinedIcon />
+                    </Icon>
+                </Info>
+            </Link>
         </Container>
     );
 };

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import SearchIcon from '@material-ui/icons/Search';
 import Badge from '@material-ui/core/Badge';
@@ -6,6 +7,11 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 const Container = styled.div`
   height: 60px;
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `
 const Wrapper = styled.div`
   padding: 10px 20px;
@@ -75,11 +81,17 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>EL MODO.</Logo>
+          <Logo>
+            <Link to="/">EL MODO.</Link>
+          </Logo>
         </Center>
         <Right>
-          <MenuItem>SIGN UP</MenuItem>
-          <MenuItem>LOG IN</MenuItem>
+          <MenuItem>
+            <Link to="/sign-up">SIGN UP</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/log-in">LOG IN</Link>
+          </MenuItem>
           <MenuItem> 
             <Badge badgeContent={4} color="primary">
               <ShoppingCartIcon />

@@ -1,10 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Container = styled.div`
   flex: 1;
   margin: 2px;
   position: relative;
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `
 const Image = styled.img`
   width: 100%;
@@ -54,11 +60,13 @@ const Button = styled.button`
 const CategoryItem = ({item}) => {
   return (
     <Container>
-      <Image src={item.img} />
-      <Info>
-        <Title>{item.title}</Title>
-        <Button>Shop now</Button>
-      </Info>
+      <Link to="/product-list">
+        <Image src={item.img} />
+        <Info>
+          <Title>{item.title}</Title>
+          <Button>Shop now</Button>
+        </Info>
+      </Link>
     </Container>
   )
 }
