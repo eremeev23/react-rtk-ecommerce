@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import CategoryItem from './CategoryItem'
-import { categories } from '../data'
+// import { categories } from '../data'
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -10,6 +11,8 @@ const Container = styled.div`
 `
 
 const Categories = () => {
+  const categories = useSelector(state => state.categories.categories )
+
   return (
     <Container>
       {categories.map((item, id) => (

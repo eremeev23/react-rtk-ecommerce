@@ -7,6 +7,12 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined';
 
 const Container = styled.div`
   height: 60px;
+  background-color: #1f1f1f;
+  color: #f1f1f1;
+  //position: fixed;
+  //top: 0;
+  //width: 100%;
+  //z-index: 20;
   
   a {
     text-decoration: none;
@@ -40,6 +46,8 @@ const SearchContainer = styled.div`
 const Input = styled.input`
   border: none;
   outline: none;
+  background-color: transparent;
+  color: #f1f1f1;
 `
 
 //Center

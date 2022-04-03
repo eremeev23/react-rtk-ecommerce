@@ -5,6 +5,8 @@ import Newsletter from "../components/Newsletter";
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
+import { useParams } from "react-router-dom";
+import { categories } from '../data'
 
 const Container = styled.div``
 
@@ -41,19 +43,22 @@ const Option = styled.option`
   font-size: 16px;
 `
 
-export const ProductList = () => {
+export const ProductList = ({match}) => {
+    let params = useParams();
+    const products = categories.find(item => item.slug === params.id)
+
     return (
         <Container>
             <Announcement />
             <Navbar/>
-            <Title>Dresses</Title>
+            <Title>{products.title}</Title>
             <FilterContainer>
                 <Filter>
                     <FilterText>
                         Filter Products:
                     </FilterText>
                     <Select>
-                        <Option disabled selected>Color</Option>
+                        <Option disabled defaluValue>Color</Option>
                         <Option>White</Option>
                         <Option>Black</Option>
                         <Option>Red</Option>
@@ -61,7 +66,7 @@ export const ProductList = () => {
                         <Option>Yellow</Option>
                     </Select>
                     <Select>
-                        <Option disabled selected>Size</Option>
+                        <Option disabled defaluValue>Size</Option>
                         <Option>XS</Option>
                         <Option>S</Option>
                         <Option>M</Option>
@@ -74,13 +79,13 @@ export const ProductList = () => {
                         Sort Products:
                     </FilterText>
                     <Select>
-                        <Option selected>Newest</Option>
+                        <Option defaluValue>Newest</Option>
                         <Option>Price (asc)</Option>
                         <Option>Price (desc)</Option>
                     </Select>
                 </Filter>
             </FilterContainer>
-            <Products />
+            <Products items={products}/>
             <Newsletter />
             <Footer/>
         </Container>

@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import BackButton from "../components/BackButton";
 import SwitchFormButton from "../components/SwitchFormButton";
+
+const fadeIn = keyframes`
+ 0% { opacity: 1;}
+ 100% { opacity: 0;}
+`
+
+const fadeOut = keyframes`
+ 0% { opacity: 0;}
+ 100% { opacity: 1;}
+`
 
 const Container = styled.div`
   width: 100%;
@@ -13,6 +23,20 @@ const Container = styled.div`
   background: linear-gradient(60deg, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4))
   , url("https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") no-repeat center;
   background-size: cover;
+  
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    animation: ${fadeIn} .3s ease-in-out;
+    z-index: 100;
+    pointer-events: none;
+  }
 `
 
 const Wrapper = styled.div`
@@ -190,28 +214,28 @@ export const SignUp = () => {
           <SwitchFormButton text="Login" url="/log-in" />
         </Header>
         <Title>CREATE AN ACCOUNT</Title>
-        <Form>
+        <Form action="" novalidate>
           <InputWrapper>
-            <Input type="text" id="name" className="input-name" value={name} onChange={e => nameHandler(e)} />
+            <Input type="text" id="name" className="input-name" value={name} onChange={e => nameHandler(e)} required />
             <Label htmlFor="name" className="label-name"><span>Name</span></Label>
           </InputWrapper>
           <InputWrapper>
-            <Input type="text" id="last_name" className="input-last" value={lastName} onChange={e => lastHandler(e)} />
+            <Input type="text" id="last_name" className="input-last" value={lastName} onChange={e => lastHandler(e)} required />
             <Label htmlFor="last_name" className="label-last"><span>Last name</span></Label>
           </InputWrapper>
           <InputWrapper>
-            <Input type="email" id="email" className="input-email" value={email} onChange={e => emailHandler(e)} />
+            <Input type="email" id="email" className="input-email" value={email} onChange={e => emailHandler(e)} required />
             <Label htmlFor="email" className="label-email"><span>E-mail</span></Label>
           </InputWrapper>
           <InputWrapper>
-            <Input type="password" id="password" className="input-pass" minlength="6" value={password} onChange={e => passwordHandler(e)}  />
+            <Input type="password" id="password" className="input-pass" minlength="6" value={password} onChange={e => passwordHandler(e)} required />
             <Label htmlFor="password" className="label-pass"><span>Password</span></Label>
             <HideButton>
               <VisibilityOff />
             </HideButton>
           </InputWrapper>
           <InputWrapper>
-            <Input type="password" id="confirm" className="input-confirm" minlength="6" value={confirm} onChange={e => confirmHandler(e)} />
+            <Input type="password" id="confirm" className="input-confirm" minlength="6" value={confirm} onChange={e => confirmHandler(e)} required />
             <Label htmlFor="confirm" className="label-confirm"><span>Confirm password</span></Label>
             <HideButton>
               <VisibilityOff />

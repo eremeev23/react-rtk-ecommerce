@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { popularProducts } from '../data'
 import Product from './Product'
 
 const Container = styled.div`
@@ -9,11 +8,16 @@ const Container = styled.div`
   justify-content: space-between;
 `
 
-const Products = () => {
+const Products = ({items}) => {
+    let category = items.slug
+    const products = items.products
+
+    console.log(category, products)
+
     return (
         <Container>
-            { popularProducts.map((item, id) => (
-                <Product item={item} key={id}/>
+            { products.map((item, id) => (
+              <Product item={item} params={{category: category}} id={id} key={id}/>
             ))}
         </Container>
     );

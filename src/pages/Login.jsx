@@ -1,8 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import BackButton from "../components/BackButton";
 import SwitchFormButton from "../components/SwitchFormButton";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+
+
+const fadeIn = keyframes`
+ 0% { opacity: 1;}
+ 100% { opacity: 0;}
+`
+
 
 const Container = styled.div`
   width: 100%;
@@ -13,6 +20,20 @@ const Container = styled.div`
   background: linear-gradient(240deg, rgba(0, 0, 0, .1), rgba(0, 0, 0, .4))
   , url("https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") no-repeat center;
   background-size: cover;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    animation: ${fadeIn} .3s ease-in-out;
+    z-index: 100;
+    pointer-events: none;
+  }
 `
 
 const Wrapper = styled.div`
