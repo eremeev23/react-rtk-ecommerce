@@ -5,10 +5,29 @@ import Newsletter from "../components/Newsletter";
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
-import { useParams } from "react-router-dom";
-import { categories } from '../data'
+import { useNavigate, useParams } from "react-router-dom";
+import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
+import { useSelector } from "react-redux";
 
-const Container = styled.div``
+const Container = styled.div`
+`
+
+const HomeBtn = styled.button`
+    margin-top: 15px;
+    margin-left: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    text-decoration: none;
+    color: inherit;
+    border: none;
+  background-color: transparent;
+
+    svg {
+        margin-right: 7px;
+    }
+`
 
 const Title = styled.h1`
   margin: 20px;
@@ -44,14 +63,20 @@ const Option = styled.option`
 `
 
 export const ProductList = ({match}) => {
+    const navigate = useNavigate();
     let params = useParams();
-    const products = categories.find(item => item.slug === params.id)
+    const title = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === params.id)[0][0]).join(''));
+    const products = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === params.id)[0][1]));
 
     return (
         <Container>
             <Announcement />
             <Navbar/>
-            <Title>{products.title}</Title>
+            <HomeBtn  onClick={() => navigate(-1)}>
+                <KeyboardBackspaceIcon />
+                Home
+            </HomeBtn>
+            <Title>{ title }</Title>
             <FilterContainer>
                 <Filter>
                     <FilterText>

@@ -29,7 +29,7 @@ const Announcement = () => {
 
   return (
     <Container className='announcement'>
-      Super Deal! Free shipping in November for Saint-Petersurg.
+      Super Deal! Free shipping in November for Saint-Petersburg.
       <CloseButton onClick={closeAnnouncement}>
         <CancelIcon />
       </CloseButton>

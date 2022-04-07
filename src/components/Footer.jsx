@@ -11,7 +11,7 @@ import AlternateEmailIcon from '@material-ui/icons/MailOutline';
 const Container = styled.footer`
   margin-top: 5px;
   display: flex;
-  background-color: #fcf5f5;
+  background-color: #f5fbfc;
 `
 
 const Left = styled.div`

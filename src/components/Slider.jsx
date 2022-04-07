@@ -2,7 +2,8 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons'
 import React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
-import { sliderItems } from '../data'
+import {useSelector} from "react-redux";
+import {Link} from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
@@ -65,40 +66,21 @@ const Desc = styled.p`
   letter-spacing: 2px;
   text-transform: uppercase;
 `
-const Button = styled.button`
-  padding: 10px;
-  font-size: 20px;
-  background-color: transparent;
-  cursor: pointer;
-  border: 1px solid #000;
-  border-radius: 4px;
-  transition: all .3s ease;
-  
-  &:hover {
-    background: #000;
-    color: #fff;
-  }
-`
 
 
 
 const Slider = () => {
-  const [slideIndex, setSlideIndex] = useState(0)
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  const sliderItems = useSelector(state => state.slides.slides)
 
   const handleClick = direction => {
     if (direction === 'left') {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2)
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
     } else {
-      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0)
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
   }
-
-  const autoplay = () => {
-    setTimeout(() => {
-      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0)
-    }, 5000)
-  }
-  autoplay()
 
   return (
     <Container>
@@ -114,7 +96,7 @@ const Slider = () => {
             <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>SHOP NOW</Button>
+              <Link className="shop-now" to={item.slug}>SHOP NOW</Link>
             </InfoContainer>
           </Slide>
         ))}

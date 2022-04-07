@@ -8,7 +8,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 60vh;
-  background-color: #fcf5f5;
+  background-color: #f5fbfc;
 `
 
 const Title = styled.h2`

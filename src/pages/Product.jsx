@@ -6,9 +6,9 @@ import Remove from '@material-ui/icons/Remove';
 import Announcement from "../components/Announcement";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import {useNavigate, useLocation, useParams } from "react-router-dom";
-import { categories } from "../data"
+import { useLocation, useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
 
@@ -90,11 +90,21 @@ const FilterColor = styled.input`
     border-radius: 50%;
     border: 1px solid gray;
     background-color: ${props => props.color};
-    transition: border .1s ease-in-out;
   }
-  
-  &:checked::before {
+
+  &:checked::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    transform: translateY(-50%) translateX(-4px);
+    background-color: aliceblue;
     border: 3px solid teal;
+    border-radius: 50%;
+    z-index: -1;
+    transition: border .1s ease-in-out;
   }
 `
 
@@ -156,7 +166,7 @@ export const Product = ({match}) => {
   let params = useParams();
   let location = useLocation();
   let category = location.pathname.split('/')[1];
-  let product = categories.find(item => item.slug === category).products.find(elem => elem.id == params.id);
+  let product = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === category)[0][1])[0].filter(elem => elem.id == params.id)[0])
 
   const [num, setNum] = useState(1);
 
@@ -168,8 +178,12 @@ export const Product = ({match}) => {
     }
   }
 
-  const handleColor = color => {
+  const handleColor = e => {
+    const radios = document.querySelectorAll('input[type=radio]');
 
+    radios.forEach(el => el.removeAttribute('checked'))
+
+    e.target.setAttribute('checked', true)
   }
 
   return (
@@ -190,7 +204,7 @@ export const Product = ({match}) => {
               <Filter>
                 <FilterTitle>Color</FilterTitle>
                 { product.colors.map((item, id) => (
-                  <FilterColor type="radio" name="color" id={id} value={item} color={item} key={id} onClick={() => handleColor(item)}/>
+                  <FilterColor type="radio" name="color" id={id} value={item} color={item} key={id} />
                 ))}
               </Filter>
               <Filter>

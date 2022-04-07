@@ -9,10 +9,6 @@ const Container = styled.div`
   height: 60px;
   background-color: #1f1f1f;
   color: #f1f1f1;
-  //position: fixed;
-  //top: 0;
-  //width: 100%;
-  //z-index: 20;
   
   a {
     text-decoration: none;
@@ -31,11 +27,7 @@ const Left = styled.div`
   display: flex;
   align-items: center;
 `
-const Language = styled.span`
-  font-size: 14px;
-  cursor: pointer;
-  padding: 10px;
-`
+
 const SearchContainer = styled.div`
   border: 1px solid lightgrey;
   display: flex;
@@ -77,12 +69,6 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Language>
-            EN
-          </Language>
-          <Language>
-            RU
-          </Language>
           <SearchContainer>
             <Input />
             <SearchIcon style={{color: "gray", fontSize: 18}}/> 

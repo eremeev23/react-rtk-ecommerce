@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import CategoryItem from './CategoryItem'
-// import { categories } from '../data'
 import { useSelector } from "react-redux";
 
 const Container = styled.div`

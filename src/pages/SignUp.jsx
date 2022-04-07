@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import BackButton from "../components/BackButton";
 import SwitchFormButton from "../components/SwitchFormButton";
+import { Link } from "react-router-dom";
 
 const fadeIn = keyframes`
  0% { opacity: 1;}
@@ -242,7 +243,8 @@ export const SignUp = () => {
             </HideButton>
           </InputWrapper>
           <Agreement>
-            I consent to the processing of my personal data in accordance with the <a href="#">PRIVACY POLICY</a>
+
+            I consent to the processing of my personal data in accordance with the <Link to="/policy">PRIVACY POLICY</Link>
           </Agreement>
           <Button type="submit" disabled={!formValid} >CREATE</Button>
         </Form>

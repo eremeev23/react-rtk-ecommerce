@@ -10,7 +10,8 @@ const clothesSlice = createSlice({
         name: "Girl's summer dress",
         colors: ["#D5A2A1"],
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure tempora!',
-        sizes: ["S", "M"]
+        sizes: ["S", "M"],
+        price: 5.22
       },
       {
         id: 2,
@@ -18,7 +19,8 @@ const clothesSlice = createSlice({
         name: "Girl's white dress",
         colors: ["#f1f1f1"],
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ',
-        sizes: ["XS", "S", "XL"]
+        sizes: ["XS", "S", "XL"],
+        price: 1.99
       },
       {
         id: 3,
@@ -26,7 +28,8 @@ const clothesSlice = createSlice({
         name: "Boy's t-shirt",
         colors: ["#8D8986", "#61B3FF"],
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure tempora!',
-        sizes: ["XS", "S", "M"]
+        sizes: ["XS", "S", "M"],
+        price: 2.00
       },
       {
         id: 4,
@@ -34,7 +37,8 @@ const clothesSlice = createSlice({
         name: "Woman's skirt",
         colors: ["#452522"],
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure tempora! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure tempora!',
-        sizes: ["XS", "S", "M", "L", "XL"]
+        sizes: ["XS", "S", "M", "L", "XL"],
+        price: 0.99
       },
       {
         id: 5,
@@ -42,7 +46,8 @@ const clothesSlice = createSlice({
         name: 'Unisex sweatshirt',
         colors: ["#203437", "#1D1D1D", "#8AA2A9"],
         description: '',
-        sizes: ["S", "L", "XL"]
+        sizes: ["S", "L", "XL"],
+        price: 9.99
       },
       {
         id: 6,
@@ -50,7 +55,8 @@ const clothesSlice = createSlice({
         name: "Man's Jean jacket",
         colors: ["#9ABCCC", "#2D262C"],
         description: '',
-        sizes: ["XS", "L", "XL"]
+        sizes: ["XS", "L", "XL"],
+        price: 3.50
       },
     ]
   },

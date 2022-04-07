@@ -7,6 +7,7 @@ import { Product } from './pages/Product';
 import { SignUp } from './pages/SignUp';
 import { Login } from './pages/Login';
 import { PageNotFound } from './pages/PageNotFound';
+import { Policy } from './pages/Policy';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/:id/:id" element={<Product />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/log-in" element={<Login />} />
+          <Route path="/policy" element={<Policy />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
     </div>

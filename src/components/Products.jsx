@@ -9,15 +9,12 @@ const Container = styled.div`
 `
 
 const Products = ({items}) => {
-    let category = items.slug
-    const products = items.products
-
-    console.log(category, products)
+    const products = items[0];
 
     return (
         <Container>
             { products.map((item, id) => (
-              <Product item={item} params={{category: category}} id={id} key={id}/>
+              <Product item={item} id={id} key={id}/>
             ))}
         </Container>
     );
