@@ -211,7 +211,7 @@ export const SignUp = () => {
     <Container>
       <Wrapper>
         <Header>
-          <BackButton />
+          <BackButton url={"/"}/>
           <SwitchFormButton text="Login" url="/log-in" />
         </Header>
         <Title>CREATE AN ACCOUNT</Title>

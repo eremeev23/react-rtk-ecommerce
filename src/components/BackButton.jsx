@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const Container = styled.div`
   cursor: pointer;
@@ -14,16 +14,39 @@ const Container = styled.div`
   svg {
     margin-right: 7px;
   }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
 `
 
-const BackButton = () => {
+const BackButton = ({url}) => {
   const navigate = useNavigate();
-  return (
-    <Container  onClick={() => navigate(-1)}>
-      <KeyboardBackspaceIcon />
-      Back
+
+  if (!url) {
+    return (
+      <Container  onClick={() => navigate(-1)}>
+        <KeyboardBackspaceIcon />
+        Back
+      </Container>
+    );
+  } else {
+    return(
+    <Container>
+      <Link to={`${url}`}>
+        <KeyboardBackspaceIcon />
+        Home
+      </Link>
     </Container>
-  );
+
+
+    )
+  }
+
+
 };
 
 export default BackButton;

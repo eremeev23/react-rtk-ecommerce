@@ -9,9 +9,10 @@ import PhoneIcon from '@material-ui/icons/Phone';
 import AlternateEmailIcon from '@material-ui/icons/MailOutline';
 
 const Container = styled.footer`
-  margin-top: 5px;
-  display: flex;
-  background-color: #f5fbfc;
+    margin-top: 5px;
+    display: flex;
+    background-color: #1f1f1f;
+    color: #f1f1f1;
 `
 
 const Left = styled.div`
@@ -125,7 +126,7 @@ const Footer = () => {
             <Right>
                 <Title>Contact</Title>
                 <ContactItem href="https://maps.google.com/?ll=59.927563,30.360613" target="_blank" >
-                    <PlaceIcon style={{marginRight: "10px"}}/> Lorem ipsum dolor sit amet.
+                    <PlaceIcon style={{marginRight: "10px"}}/>  Saint-Petersburg, Ligovskiy avenue 30A, 191040
                 </ContactItem>
                 <ContactItem href="tel:89995554433">
                     <PhoneIcon style={{marginRight: "10px"}}/> +7 999 555 44 33

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const clothesSlice = createSlice({
-  name: 'clothes',
+  name: 'Clothes',
   initialState: {
     clothes: [
       {
@@ -11,7 +11,8 @@ const clothesSlice = createSlice({
         colors: ["#D5A2A1"],
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure tempora!',
         sizes: ["S", "M"],
-        price: 5.22
+        price: 5.22,
+        date: "04.2021"
       },
       {
         id: 2,
@@ -20,7 +21,8 @@ const clothesSlice = createSlice({
         colors: ["#f1f1f1"],
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. ',
         sizes: ["XS", "S", "XL"],
-        price: 1.99
+        price: 1.99,
+        date: "02.2021"
       },
       {
         id: 3,
@@ -29,7 +31,8 @@ const clothesSlice = createSlice({
         colors: ["#8D8986", "#61B3FF"],
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure tempora!',
         sizes: ["XS", "S", "M"],
-        price: 2.00
+        price: 2.00,
+        date: "06.2021"
       },
       {
         id: 4,
@@ -38,7 +41,8 @@ const clothesSlice = createSlice({
         colors: ["#452522"],
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure tempora! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure tempora!',
         sizes: ["XS", "S", "M", "L", "XL"],
-        price: 0.99
+        price: 0.99,
+        date: "06.2021"
       },
       {
         id: 5,
@@ -47,7 +51,8 @@ const clothesSlice = createSlice({
         colors: ["#203437", "#1D1D1D", "#8AA2A9"],
         description: '',
         sizes: ["S", "L", "XL"],
-        price: 9.99
+        price: 9.99,
+        date: "03.2021"
       },
       {
         id: 6,
@@ -56,7 +61,8 @@ const clothesSlice = createSlice({
         colors: ["#9ABCCC", "#2D262C"],
         description: '',
         sizes: ["XS", "L", "XL"],
-        price: 3.50
+        price: 3.50,
+        date: "10.2021"
       },
     ]
   },

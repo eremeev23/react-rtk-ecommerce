@@ -156,7 +156,7 @@ export const Login = () => {
     <Container>
       <Wrapper>
         <Header>
-          <BackButton />
+          <BackButton url={"/"} />
           <SwitchFormButton text="Sign Up" url="/sign-up" />
         </Header>
         <Title>Log in your account</Title>

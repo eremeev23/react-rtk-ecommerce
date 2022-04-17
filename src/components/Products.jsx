@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import Product from './Product'
 
 const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding: 0 20px;
 `
 
 const Products = ({items}) => {

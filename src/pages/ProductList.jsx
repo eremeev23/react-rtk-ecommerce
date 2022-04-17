@@ -65,7 +65,7 @@ const Option = styled.option`
 export const ProductList = ({match}) => {
     const navigate = useNavigate();
     let params = useParams();
-    const title = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === params.id)[0][0]).join(''));
+    const title = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === params.id)[0][0]).join('')).toUpperCase();
     const products = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === params.id)[0][1]));
 
     return (
@@ -84,6 +84,7 @@ export const ProductList = ({match}) => {
                     </FilterText>
                     <Select>
                         <Option disabled defaluValue>Color</Option>
+                        <Option>All</Option>
                         <Option>White</Option>
                         <Option>Black</Option>
                         <Option>Red</Option>
@@ -92,6 +93,7 @@ export const ProductList = ({match}) => {
                     </Select>
                     <Select>
                         <Option disabled defaluValue>Size</Option>
+                        <Option>All</Option>
                         <Option>XS</Option>
                         <Option>S</Option>
                         <Option>M</Option>
@@ -104,7 +106,8 @@ export const ProductList = ({match}) => {
                         Sort Products:
                     </FilterText>
                     <Select>
-                        <Option defaluValue>Newest</Option>
+                        <Option defaluValue>Popular</Option>
+                        <Option>Newest</Option>
                         <Option>Price (asc)</Option>
                         <Option>Price (desc)</Option>
                     </Select>
