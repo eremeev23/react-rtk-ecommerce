@@ -1,6 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import CancelIcon from '@material-ui/icons/Cancel';
+import { useDispatch, useSelector } from "react-redux";
+import {closeAnnouncement} from "../store/reducers/announcementSlice"
 
 const Container = styled.div`
   position: relative;
@@ -12,6 +14,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   letter-spacing: 2px;
+  
+  &.hidden {
+    display: none;
+  }
 `
 const CloseButton = styled.div`
   position: absolute;
@@ -21,17 +27,16 @@ const CloseButton = styled.div`
 `
 
 const Announcement = () => {
+  const { announcement } = useSelector(state => state.announcement)
+  const dispatch = useDispatch();
 
-  const closeAnnouncement = () => {
-    const announcement = document.querySelector('.announcement')
-    announcement.style = 'display: none';
-  }
+  const close = () => dispatch(closeAnnouncement())
 
   return (
-    <Container className='announcement'>
+    <Container className={announcement ? null : "hidden"}>
       Super Deal! Free shipping in November for Saint-Petersburg.
-      <CloseButton onClick={closeAnnouncement}>
-        <CancelIcon />
+      <CloseButton onClick={close}>
+        <CancelIcon/>
       </CloseButton>
     </Container>
   )

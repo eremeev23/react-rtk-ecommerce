@@ -7,9 +7,6 @@ const userSlice = createSlice({
   },
   reducers: {
     signUp(state, action) {
-      console.log(state)
-      console.log(action)
-
       state.users.push({
         id: new Date().toISOString(),
         name: action.payload.name,

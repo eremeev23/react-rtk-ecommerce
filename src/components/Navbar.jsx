@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import SearchIcon from '@material-ui/icons/Search';
 import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined';
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   height: 60px;
@@ -51,7 +52,7 @@ const Logo = styled.h1`
   font-weight: bold;
 `
 
-//Rigth
+//Right
 const Right = styled.div`
   flex: 1;
   display: flex;
@@ -65,6 +66,8 @@ const MenuItem = styled.div`
 `
 
 const Navbar = () => {
+  const cartAmount = useSelector(state => state.cart.cartItems.length)
+
   return (
     <Container>
       <Wrapper>
@@ -88,7 +91,7 @@ const Navbar = () => {
           </MenuItem>
           <MenuItem>
             <Link to="/cart">
-              <Badge badgeContent={4} color="primary">
+              <Badge badgeContent={cartAmount} color="primary">
                 <ShoppingCartIcon />
               </Badge>
             </Link>

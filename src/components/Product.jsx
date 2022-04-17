@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined';
 import SearchIcon from '@material-ui/icons/Search';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 
@@ -22,30 +21,17 @@ const Info = styled.div`
 
 const Container = styled.div`
   position: relative;
-  min-width: 280px;
-  height: 350px;
+  padding: 20px 10px;
+  height: fit-content;
   background-color: #fff;
 
   &:hover ${Info} {
     opacity: 1;
   }
-  
-  .product-link {
-    box-sizing: border-box;
-    padding: 10px 10px 20px;
-    text-decoration: none;
-    color: inherit;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
 `
 
 const Image = styled.img`
-  height: 80%;
+  height: auto;
   width: 100%;
   z-index: 2;
 `
@@ -99,6 +85,7 @@ const Icon = styled.button`
   background-color: #fff;
   transition: transform .3s ease, background-color .5s ease;
   z-index: 10;
+  pointer-events: all;
   
   a {
     color: #000;
@@ -113,31 +100,26 @@ const Icon = styled.button`
 const Product = ({item}) => {
     return (
         <Container>
-            <Link to={`${item.id}`} className="product-link">
-                <Image src={item.img}/>
-                <Name> {item.name}</Name>
-                <Price> $ {item.price}</Price>
-                <Colors>
-                  {item.colors.map((elem, id) => {
-                    return (
-                      <Color type="radio" name="color" id={id} value={elem} color={elem} key={id} />
-                    )
-                  })}
-                </Colors>
-                <Info>
-                    <Icon>
-                        <ShoppingCartIcon />
-                    </Icon>
-                    <Icon>
-                      <Link to={`${item.id}`}>
-                        <SearchIcon />
-                      </Link>
-                    </Icon>
-                    <Icon>
-                        <FavoriteBorderOutlinedIcon />
-                    </Icon>
-                </Info>
-            </Link>
+          <Image src={item.img}/>
+          <Name> {item.name}</Name>
+          <Price> $ {item.price}</Price>
+          <Colors>
+            {item.colors.map((elem, id) => {
+              return (
+                <Color type="radio" name="color" id={id} value={elem} color={elem} key={id} />
+              )
+            })}
+          </Colors>
+          <Info>
+            <Icon>
+              <Link to={`${item.id}`}>
+                <SearchIcon />
+              </Link>
+            </Icon>
+            <Icon>
+                <FavoriteBorderOutlinedIcon />
+            </Icon>
+          </Info>
         </Container>
     );
 };

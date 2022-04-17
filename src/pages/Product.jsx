@@ -8,7 +8,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useLocation, useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {addItem} from "../store/reducers/cartSlice";
 
 const Container = styled.div`
 
@@ -165,8 +166,11 @@ const Button = styled.button`
 export const Product = ({match}) => {
   let params = useParams();
   let location = useLocation();
+  const dispatch = useDispatch();
   let category = location.pathname.split('/')[1];
-  let product = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === category)[0][1])[0].filter(elem => elem.id == params.id)[0])
+  let product = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === category)[0][1])[0].filter(elem => elem.id == params.id)[0]);
+
+  const addToCart = () => dispatch(addItem());
 
   const [num, setNum] = useState(1);
 

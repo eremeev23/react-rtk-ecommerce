@@ -6,6 +6,8 @@ import accessoriesReducer from './reducers/accessoriesSlice';
 import shoesReducer from './reducers/shoesSlice';
 import sliderReducer from './reducers/sliderSlice';
 import cartReducer from "./reducers/cartSlice";
+import popularItemsReducer from "./reducers/popularItemsSlice"
+import announcementStateReducer from "./reducers/announcementSlice"
 
 export default  configureStore({
   reducer: {
@@ -16,5 +18,7 @@ export default  configureStore({
     shoes: shoesReducer,
     slides: sliderReducer,
     cart: cartReducer,
+    popularItems: popularItemsReducer,
+    announcement: announcementStateReducer
   }
 })

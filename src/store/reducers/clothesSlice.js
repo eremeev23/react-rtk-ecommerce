@@ -5,7 +5,7 @@ const clothesSlice = createSlice({
   initialState: {
     clothes: [
       {
-        id: 1,
+        id: "summer-dress",
         img: 'https://images.pexels.com/photos/5693889/pexels-photo-5693889.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
         name: "Girl's summer dress",
         colors: ["#D5A2A1"],
@@ -15,7 +15,7 @@ const clothesSlice = createSlice({
         date: "04.2021"
       },
       {
-        id: 2,
+        id: "white-dress",
         img: 'https://images.pexels.com/photos/3552358/pexels-photo-3552358.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
         name: "Girl's white dress",
         colors: ["#f1f1f1"],
@@ -25,7 +25,7 @@ const clothesSlice = createSlice({
         date: "02.2021"
       },
       {
-        id: 3,
+        id: "t-shirt",
         img: 'https://images.pexels.com/photos/5693888/pexels-photo-5693888.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
         name: "Boy's t-shirt",
         colors: ["#8D8986", "#61B3FF"],
@@ -35,7 +35,7 @@ const clothesSlice = createSlice({
         date: "06.2021"
       },
       {
-        id: 4,
+        id: "skirt",
         img: 'https://images.pexels.com/photos/4458518/pexels-photo-4458518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
         name: "Woman's skirt",
         colors: ["#452522"],
@@ -45,7 +45,7 @@ const clothesSlice = createSlice({
         date: "06.2021"
       },
       {
-        id: 5,
+        id: "sweatshirt",
         img: 'https://images.pexels.com/photos/6342786/pexels-photo-6342786.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         name: 'Unisex sweatshirt',
         colors: ["#203437", "#1D1D1D", "#8AA2A9"],
@@ -55,7 +55,7 @@ const clothesSlice = createSlice({
         date: "03.2021"
       },
       {
-        id: 6,
+        id: "jean-jacket",
         img: 'https://images.pexels.com/photos/3649765/pexels-photo-3649765.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
         name: "Man's Jean jacket",
         colors: ["#9ABCCC", "#2D262C"],

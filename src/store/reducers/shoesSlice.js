@@ -5,7 +5,7 @@ const shoesSlice = createSlice({
   initialState: {
     shoes: [
       {
-        id: 1,
+        id: "heeled-shoes",
         img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80',
         name: "Heeled shoes",
         colors: ["#265a87", "#b0957c"],
@@ -14,7 +14,7 @@ const shoesSlice = createSlice({
         sizes: ['35', '36', '37', '39']
       },
       {
-        id: 2,
+        id: "moccasins",
         img: 'https://images.unsplash.com/photo-1632748914020-941675839f2a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=584&q=80',
         name: "Woman's moccasins",
         colors: ["#FCD152", "#219ebc", "#bb3e03"],
@@ -23,7 +23,7 @@ const shoesSlice = createSlice({
         sizes: ['35', '38', '39']
       },
       {
-        id: 3,
+        id: "base-boots",
         img: 'https://images.unsplash.com/photo-1574009709841-7e4781f5afef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80',
         name: "Man's base boots",
         colors: ["#D17D43"],
@@ -32,7 +32,7 @@ const shoesSlice = createSlice({
         sizes: ['39', '41', '42', '43', '44']
       },
       {
-        id: 4,
+        id: "nikes",
         img: 'https://images.unsplash.com/photo-1624005340901-e6cffc4e3a32?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=521&q=80',
         name: "Nike sneakers",
         colors: ["#232323", "#999999"],
@@ -41,7 +41,7 @@ const shoesSlice = createSlice({
         sizes: ['39', '41', '42', '43', '44']
       },
       {
-        id: 5,
+        id: "converse-all-stars",
         img: 'https://images.unsplash.com/photo-1584633155097-19e7753dba76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80',
         name: "Classic Converse All stars",
         colors: ["#444444", "#f1f1f1", "#384746"],
@@ -50,7 +50,7 @@ const shoesSlice = createSlice({
         sizes: ['39', '41', '42', '43', '44']
       },
       {
-        id: 6,
+        id: "running-shoes",
         img: 'https://images.unsplash.com/photo-1584545284372-f22510eb7c26?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80',
         name: "Running shoes",
         colors: ["#0A4958", "#97CC04", "#474647", "#F58E90"],

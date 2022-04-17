@@ -1,12 +1,12 @@
-import React, {useReducer} from 'react';
+import React from 'react';
 import Newsletter from "../components/Newsletter";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import styled from "styled-components"
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
-import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
-import Product from "../components/Product";
+import { useNavigate } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {clearCart} from "../store/reducers/cartSlice"
 
 const HomeBtn = styled.button`
     margin-top: 15px;
@@ -75,7 +75,10 @@ const ItemName = styled.p`
 
 export const Cart = () => {
   const navigate = useNavigate();
-  const items = useSelector(state => state.cart.cartItems)
+  const items = useSelector(state => state.cart.cartItems);
+  const dispatch = useDispatch();
+
+  const deleteAllItems = () => dispatch(clearCart());
 
   return (
     <div>
@@ -86,7 +89,7 @@ export const Cart = () => {
       </HomeBtn>
       <CartHeader>
         <Title>CART</Title>
-        <Clear>Clear cart</Clear>
+        <Clear onClick={deleteAllItems}>Clear cart</Clear>
       </CartHeader>
       <CartWrapper>
         <CartItems>

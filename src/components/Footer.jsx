@@ -7,12 +7,13 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import PlaceIcon from '@material-ui/icons/Place';
 import PhoneIcon from '@material-ui/icons/Phone';
 import AlternateEmailIcon from '@material-ui/icons/MailOutline';
+import {Link} from "react-router-dom";
 
 const Container = styled.footer`
-    margin-top: 5px;
-    display: flex;
-    background-color: #1f1f1f;
-    color: #f1f1f1;
+  margin-top: 5px;
+  display: flex;
+  background-color: #1f1f1f;
+  color: #f1f1f1;
 `
 
 const Left = styled.div`
@@ -65,6 +66,11 @@ const List = styled.ul`
 const ListItem = styled.li`
   margin-bottom: 10px;
   width: 50%;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `
 
 const Right = styled.div`
@@ -85,59 +91,77 @@ const Payment = styled.img`
 `
 
 const Footer = () => {
-    return (
-        <Container>
-            <Left>
-                <Logo>
-                    El modo.
-                </Logo>
-                <Desc>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias quae sint veritatis.
-                </Desc>
-                <SocialContainer>
-                    <SocialIcon color="3b5999" href="#">
-                        <FacebookIcon />
-                    </SocialIcon>
-                    <SocialIcon color="e1306c" href="#">
-                        <InstagramIcon />
-                    </SocialIcon>
-                    <SocialIcon color="55acee" href="#">
-                        <TwitterIcon />
-                    </SocialIcon>
-                    <SocialIcon color="e60020" href="#">
-                        <YouTubeIcon />
-                    </SocialIcon>
-                </SocialContainer>
-            </Left>
-            <Center>
-                <Title>Useful links</Title>
-                <List>
-                    <ListItem>Home</ListItem>
-                    <ListItem>Cart</ListItem>
-                    <ListItem>Man's Fashion</ListItem>
-                    <ListItem>Woman's Fashion</ListItem>
-                    <ListItem>Accessories</ListItem>
-                    <ListItem>My account</ListItem>
-                    <ListItem>Order tracking</ListItem>
-                    <ListItem>Wish List</ListItem>
-                    <ListItem>Terms</ListItem>
-                </List>
-            </Center>
-            <Right>
-                <Title>Contact</Title>
-                <ContactItem href="https://maps.google.com/?ll=59.927563,30.360613" target="_blank" >
-                    <PlaceIcon style={{marginRight: "10px"}}/>  Saint-Petersburg, Ligovskiy avenue 30A, 191040
-                </ContactItem>
-                <ContactItem href="tel:89995554433">
-                    <PhoneIcon style={{marginRight: "10px"}}/> +7 999 555 44 33
-                </ContactItem>
-                <ContactItem href="mailto:contact@mail.com">
-                    <AlternateEmailIcon style={{marginRight: "10px"}}/> contact@mail.com
-                </ContactItem>
-                <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
-            </Right>
-        </Container>
-    );
+  return (
+    <Container>
+      <Left>
+        <Logo>
+          El modo.
+        </Logo>
+        <Desc>
+          We make you brighter than ever.
+        </Desc>
+        <SocialContainer>
+          <SocialIcon color="3b5999" href="#">
+            <FacebookIcon />
+          </SocialIcon>
+          <SocialIcon color="e1306c" href="#">
+            <InstagramIcon />
+          </SocialIcon>
+          <SocialIcon color="55acee" href="#">
+            <TwitterIcon />
+          </SocialIcon>
+          <SocialIcon color="e60020" href="#">
+            <YouTubeIcon />
+          </SocialIcon>
+        </SocialContainer>
+      </Left>
+      <Center>
+        <Title>Useful links</Title>
+        <List>
+          <ListItem>
+            <Link to="/">Home</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/cart">Cart</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/clothes">Clothes</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/accessories">Accessories</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/shoes">Shoes</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/account">My account</Link>
+          </ListItem>
+          <ListItem>
+            <Link to={"/account/orders"}>Order tracking</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/account/wish-list">Wish List</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/account">Policy</Link>
+          </ListItem>
+        </List>
+      </Center>
+      <Right>
+        <Title>Contact</Title>
+        <ContactItem href="https://maps.google.com/?ll=59.927563,30.360613" target="_blank" >
+          <PlaceIcon style={{marginRight: "10px"}}/>  Saint-Petersburg, Ligovskiy avenue 30A, 191040
+        </ContactItem>
+        <ContactItem href="tel:89995554433">
+          <PhoneIcon style={{marginRight: "10px"}}/> +7 999 555 44 33
+        </ContactItem>
+        <ContactItem href="mailto:contact@mail.com">
+          <AlternateEmailIcon style={{marginRight: "10px"}}/> contact@mail.com
+        </ContactItem>
+        <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
+      </Right>
+    </Container>
+  );
 };
 
 export default Footer;

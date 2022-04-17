@@ -6,6 +6,14 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     padding: 0 20px;
+    
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media screen and (max-width: 500px) {
+        grid-template-columns: 1fr 1fr;
+    }
 `
 
 const Products = ({items}) => {

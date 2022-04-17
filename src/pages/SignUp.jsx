@@ -10,11 +10,6 @@ const fadeIn = keyframes`
  100% { opacity: 0;}
 `
 
-const fadeOut = keyframes`
- 0% { opacity: 0;}
- 100% { opacity: 1;}
-`
-
 const Container = styled.div`
   width: 100%;
   height: 100vh;
