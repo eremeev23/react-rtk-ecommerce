@@ -153,7 +153,6 @@ const HideButton = styled.button`
 
 export const SignUp = () => {
   const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
@@ -170,11 +169,6 @@ export const SignUp = () => {
 
   const nameHandler = e => {
     setName(e.target.value)
-    return !!e.target.value;
-  }
-
-  const lastHandler = e => {
-    setLastName(e.target.value)
     return !!e.target.value;
   }
 
@@ -214,10 +208,6 @@ export const SignUp = () => {
           <InputWrapper>
             <Input type="text" id="name" className="input-name" value={name} onChange={e => nameHandler(e)} required />
             <Label htmlFor="name" className="label-name"><span>Name</span></Label>
-          </InputWrapper>
-          <InputWrapper>
-            <Input type="text" id="last_name" className="input-last" value={lastName} onChange={e => lastHandler(e)} required />
-            <Label htmlFor="last_name" className="label-last"><span>Last name</span></Label>
           </InputWrapper>
           <InputWrapper>
             <Input type="email" id="email" className="input-email" value={email} onChange={e => emailHandler(e)} required />

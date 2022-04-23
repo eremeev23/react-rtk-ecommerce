@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 import { useLocation, useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import {useDispatch, useSelector} from "react-redux";
-import {addItem} from "../store/reducers/cartSlice";
+import {addItem, countBill} from "../store/reducers/cartSlice";
 
 const Container = styled.div`
 
@@ -114,7 +114,7 @@ const FilterSize = styled.select`
   margin-left: 10px;
   padding: 5px;
   border: none;
-  border-bottom: 1px solid #393939;
+  border-bottom: 2px solid #393939;
 `
 
 const FilterSizeOption = styled.option``
@@ -166,13 +166,36 @@ const Button = styled.button`
 export const Product = ({match}) => {
   let params = useParams();
   let location = useLocation();
+
   const dispatch = useDispatch();
   let category = location.pathname.split('/')[1];
   let product = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === category)[0][1])[0].filter(elem => elem.id == params.id)[0]);
 
-  const addToCart = () => dispatch(addItem());
-
   const [num, setNum] = useState(1);
+  const [color, setColor] = useState(product.colors[0]);
+  const [size, setSize] = useState(product.sizes[0]);
+  let order = {};
+
+  const addToCart = order => dispatch(addItem(order));
+  const count = order => dispatch(countBill(order))
+
+  const addProduct = e => {
+    e.preventDefault()
+
+    order = {
+      category,
+      id: product.id,
+      img: product.img,
+      name: product.name,
+      color: color,
+      price: product.price * num,
+      size: size,
+      amount: num
+    };
+
+    addToCart(order)
+    count(order)
+  }
 
   const numHandler = action => {
     if (action === "plus") {
@@ -182,12 +205,22 @@ export const Product = ({match}) => {
     }
   }
 
-  const handleColor = e => {
-    const radios = document.querySelectorAll('input[type=radio]');
+  function areSizes() {
+    if (product.sizes.length) {
+      return (
+        <Filter>
 
-    radios.forEach(el => el.removeAttribute('checked'))
-
-    e.target.setAttribute('checked', true)
+          <FilterTitle>Size</FilterTitle>
+          <FilterSize onChange={e => setSize(e.target.value)}>
+            { product.sizes.map((item, id) => (
+              <FilterSizeOption value={item} key={id} defaultValue={size}>
+                {item}
+              </FilterSizeOption>
+            ))}
+          </FilterSize>
+        </Filter>
+      )
+    }
   }
 
   return (
@@ -208,19 +241,19 @@ export const Product = ({match}) => {
               <Filter>
                 <FilterTitle>Color</FilterTitle>
                 { product.colors.map((item, id) => (
-                  <FilterColor type="radio" name="color" id={id} value={item} color={item} key={id} />
+                  <FilterColor
+                    onChange={e => setColor(e.target.value)}
+                    type="radio"
+                    name="color"
+                    id={id}
+                    value={item}
+                    color={item}
+                    key={id}
+                    checked={item === color}
+                  />
                 ))}
               </Filter>
-              <Filter>
-                <FilterTitle>Size</FilterTitle>
-                <FilterSize>
-                  { product.sizes.map((item, id) => (
-                    <FilterSizeOption value={item} key={id}>
-                      {item}
-                    </FilterSizeOption>
-                  ))}
-                </FilterSize>
-              </Filter>
+              {areSizes()}
             </FilterContainer>
             <AddContainer>
               <AmountContainer>
@@ -228,7 +261,7 @@ export const Product = ({match}) => {
                 <Amount>{num}</Amount>
                 <Add onClick={() => numHandler("plus")} style={{cursor: "pointer"}}/>
               </AmountContainer>
-              <Button>ADD TO CART</Button>
+              <Button onClick={addProduct}>ADD TO CART</Button>
             </AddContainer>
           </InfoContainer>
         </Wrapper>

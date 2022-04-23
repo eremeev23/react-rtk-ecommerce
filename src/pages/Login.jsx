@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled, { keyframes } from 'styled-components';
 import BackButton from "../components/BackButton";
 import SwitchFormButton from "../components/SwitchFormButton";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import {useSelector} from "react-redux";
 
 
 const fadeIn = keyframes`
@@ -152,6 +153,30 @@ const HideButton = styled.button`
 `
 
 export const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const users = useSelector(state => state.user.users.filter(function (item) {
+    return item.password === password ?? item.email === email
+  }))
+  // const i = useSelector(state => state.user)
+
+  const submitForm = e => {
+    e.preventDefault()
+    console.log(users)
+  }
+  // const [emailError, setEmailError] = useState(false);
+  // const [passwordError, setPasswordError] = useState(false);
+
+  // function emailTest(input) {
+  //   return /.+@.+\..+/i.test(input.value);
+  // }
+  //
+  // const emailHandler = e => {
+  //   setEmail(e.target.value);
+  //
+  // }
+
+
   return (
     <Container>
       <Wrapper>
@@ -160,13 +185,15 @@ export const Login = () => {
           <SwitchFormButton text="Sign Up" url="/sign-up" />
         </Header>
         <Title>Log in your account</Title>
-        <Form>
+        <Form onSubmit={e => submitForm(e)}>
           <InputWrapper>
-            <Input type="email" id="email" className="input-email" required/>
-            <Label htmlFor="email" className="label-email"><span>E-mail</span></Label>
+            <Input onChange={e => setEmail(e.target.value)} value={email} type="email" id="email" className="input-email" required/>
+            <Label htmlFor="email" className="label-email">
+              <span>E-mail</span>
+            </Label>
           </InputWrapper>
           <InputWrapper>
-            <Input type="password" id="password" className="input-pass" minlength="6" required/>
+            <Input onChange={e => setPassword(e.target.value)} value={password} type="password" id="password" className="input-pass" minlength="6" required/>
             <Label htmlFor="password" className="label-pass"><span>Password</span></Label>
             <HideButton>
               <VisibilityOff />

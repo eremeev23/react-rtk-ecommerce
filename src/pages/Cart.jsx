@@ -2,11 +2,13 @@ import React from 'react';
 import Newsletter from "../components/Newsletter";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import CartItem from "../components/CartItem";
 import styled from "styled-components"
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import { useNavigate } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {clearCart} from "../store/reducers/cartSlice"
+import CartBill from "../components/CartBill";
 
 const HomeBtn = styled.button`
     margin-top: 15px;
@@ -52,25 +54,8 @@ const CartWrapper = styled.div`
 `
 
 const CartItems = styled.div`
-  
-`
-
-const Bill = styled.div`
-  
-`
-
-const Item = styled.div`
-  height: 200px;
-  display: flex;
-`
-
-const Image = styled.img`
-  height: 100%;
-  
-`
-
-const ItemName = styled.p`
-  font-weight: 500;
+  padding-right: 60px;
+  width: calc(100% - 420px);
 `
 
 export const Cart = () => {
@@ -95,19 +80,12 @@ export const Cart = () => {
         <CartItems>
           {
             items.map((item, id) => (
-              <Item>
-                <Image src={item.img}/>
-                <ItemName>
-                  {item.name}
-                </ItemName>
-              </Item>
+              <CartItem item={item} key={id}>
+              </CartItem>
             ))
           }
         </CartItems>
-        <Bill>
-
-
-        </Bill>
+        <CartBill />
       </CartWrapper>
       <Newsletter />
       <Footer />

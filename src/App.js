@@ -44,7 +44,7 @@ const Modal = styled.div`
   }
 `
 
-const ModalText = styled.p`
+const ModalText = styled.div`
   line-height: 140%;
   font-weight: 500;
   
