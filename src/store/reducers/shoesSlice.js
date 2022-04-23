@@ -33,9 +33,9 @@ const shoesSlice = createSlice({
       },
       {
         id: "nikes",
-        img: 'https://images.unsplash.com/photo-1624005340901-e6cffc4e3a32?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=521&q=80',
+        img: 'https://images.pexels.com/photos/1464625/pexels-photo-1464625.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         name: "Nike sneakers",
-        colors: ["#232323", "#999999"],
+        colors: ["#fff", "#333333"],
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at iure tempora!',
         price: '60',
         sizes: ['39', '41', '42', '43', '44']

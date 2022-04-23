@@ -23,7 +23,13 @@ const Left = styled.div`
   padding: 20px;
 `
 
-const Logo = styled.h2``
+const Logo = styled.h2`
+  font-size: 36px;
+  
+  a:hover {
+    color: teal;
+  }
+`
 
 const Desc = styled.p`
   margin: 20px 0;
@@ -70,6 +76,11 @@ const ListItem = styled.li`
   a {
     text-decoration: none;
     color: inherit;
+    transition: color .2s ease-in-out;
+    
+    &:hover {
+      color: teal;
+    }
   }
 `
 
@@ -95,7 +106,9 @@ const Footer = () => {
     <Container>
       <Left>
         <Logo>
-          El modo.
+          <Link to={'/'}>
+            El modo.
+          </Link>
         </Logo>
         <Desc>
           We make you brighter than ever.

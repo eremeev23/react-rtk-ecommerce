@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {clearCart} from "../store/reducers/cartSlice"
 import CartBill from "../components/CartBill";
+import EmptyCart from "../components/EmptyCart";
 
 const HomeBtn = styled.button`
     margin-top: 15px;
@@ -65,6 +66,39 @@ export const Cart = () => {
 
   const deleteAllItems = () => dispatch(clearCart());
 
+  function showCart() {
+    if (items.length) {
+      return (
+        <>
+          <CartHeader>
+            <Title>CART</Title>
+            <Clear onClick={deleteAllItems}>Clear cart</Clear>
+          </CartHeader>
+          <CartWrapper>
+            <CartItems>
+              {
+                items.map((item, id) => (
+                  <CartItem item={item} key={id}>
+                  </CartItem>
+                ))
+              }
+            </CartItems>
+            <CartBill />
+          </CartWrapper>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <CartHeader>
+            <Title>CART</Title>
+          </CartHeader>
+          <EmptyCart />
+        </>
+      )
+    }
+  }
+
   return (
     <div>
       <Navbar/>
@@ -72,21 +106,9 @@ export const Cart = () => {
         <KeyboardBackspaceIcon />
         Back
       </HomeBtn>
-      <CartHeader>
-        <Title>CART</Title>
-        <Clear onClick={deleteAllItems}>Clear cart</Clear>
-      </CartHeader>
-      <CartWrapper>
-        <CartItems>
-          {
-            items.map((item, id) => (
-              <CartItem item={item} key={id}>
-              </CartItem>
-            ))
-          }
-        </CartItems>
-        <CartBill />
-      </CartWrapper>
+
+      {showCart()}
+
       <Newsletter />
       <Footer />
     </div>
