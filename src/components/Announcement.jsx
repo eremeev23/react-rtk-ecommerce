@@ -18,6 +18,10 @@ const Container = styled.div`
   &.hidden {
     display: none;
   }
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `
 const CloseButton = styled.div`
   position: absolute;

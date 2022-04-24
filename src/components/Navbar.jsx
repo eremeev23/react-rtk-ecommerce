@@ -6,7 +6,7 @@ import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { useSelector } from "react-redux";
 
-const Container = styled.div`
+const Header = styled.header`
   height: 60px;
   background-color: #1f1f1f;
   color: #f1f1f1;
@@ -15,9 +15,14 @@ const Container = styled.div`
     text-decoration: none;
     color: inherit;
   }
+  
+  @media screen and (max-width: 1024px) {
+    height: 50px;
+  }
 `
 const Wrapper = styled.div`
-  padding: 10px 20px;
+  padding: 0 20px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,6 +32,10 @@ const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `
 
 const SearchContainer = styled.div`
@@ -35,21 +44,38 @@ const SearchContainer = styled.div`
   align-items: center;
   margin-left: 25px;
   padding: 5px;
+  border-radius: 4px;
 `
 const Input = styled.input`
   border: none;
   outline: none;
   background-color: transparent;
   color: #f1f1f1;
+  
+  @media screen and (max-width: 768px) {
+    width: 0;
+  }
 `
 
 //Center
 const Center = styled.div`
   flex: 1;
   text-align: center;
+
+  @media screen and (max-width: 768px) {
+    text-align: left;
+  }
 `
 const Logo = styled.h1`
   font-weight: bold;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 28px;
+  }
+
+  @media screen and (max-width: 540px) {
+    font-size: 18px;
+  }
 `
 
 //Right
@@ -58,18 +84,28 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  
+  @media screen and (max-width: 540px) {
+    flex: 2;
+    justify-content: space-between;
+  }
 `
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 24px;
+
+  @media screen and (max-width: 540px) {
+    font-size: 10px;
+    margin-left: 30px;
+  }
 `
 
 const Navbar = () => {
-  const cartAmount = useSelector(state => state.cart.cartItems.length)
+  const cartAmount = useSelector(state => state.cart.cartItems.length);
 
   return (
-    <Container>
+    <Header>
       <Wrapper>
         <Left>
           <SearchContainer>
@@ -98,7 +134,7 @@ const Navbar = () => {
           </MenuItem>
         </Right>
       </Wrapper>  
-    </Container>
+    </Header>
   )
 }
 

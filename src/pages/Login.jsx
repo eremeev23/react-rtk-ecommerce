@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import BackButton from "../components/BackButton";
 import SwitchFormButton from "../components/SwitchFormButton";
@@ -152,29 +153,62 @@ const HideButton = styled.button`
   }
 `
 
+const ErrorText = styled.p`
+  margin: 20px 0 0;
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+  
+  a {
+    color: teal;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+`
+
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
   const users = useSelector(state => state.user.users.filter(function (item) {
     return item.password === password ?? item.email === email
   }))
   // const i = useSelector(state => state.user)
 
   const submitForm = e => {
-    e.preventDefault()
-    console.log(users)
+    e.preventDefault();
+    emailHandler();
+    if (!users.length) {
+      setEmail('');
+      setPassword('');
+      setError(true)
+    } else {
+      setError(false)
+    }
   }
-  // const [emailError, setEmailError] = useState(false);
-  // const [passwordError, setPasswordError] = useState(false);
 
-  // function emailTest(input) {
-  //   return /.+@.+\..+/i.test(input.value);
-  // }
-  //
-  // const emailHandler = e => {
-  //   setEmail(e.target.value);
-  //
-  // }
+  function showError() {
+    if (error) {
+      return (
+        <ErrorText>
+          Wrong email or wrong password. Please try again. Or
+          <Link to={'/sign-up'}> sign-up</Link>
+        </ErrorText>
+      )
+    } else {
+      return null
+    }
+  }
+
+  function emailTest(input) {
+    return /.+@.+\..+/i.test(input.value);
+  }
+
+  const emailHandler = () => {
+    emailTest(email) ? setEmailError(false) : setEmailError(true)
+  }
 
 
   return (
@@ -185,7 +219,7 @@ export const Login = () => {
           <SwitchFormButton text="Sign Up" url="/sign-up" />
         </Header>
         <Title>Log in your account</Title>
-        <Form onSubmit={e => submitForm(e)}>
+        <Form onSubmit={e => submitForm(e)} novalidate >
           <InputWrapper>
             <Input onChange={e => setEmail(e.target.value)} value={email} type="email" id="email" className="input-email" required/>
             <Label htmlFor="email" className="label-email">
@@ -200,6 +234,7 @@ export const Login = () => {
             </HideButton>
           </InputWrapper>
           <Forgot href="#">Forgot password?</Forgot>
+          {showError()}
           <Button type="submit">LOG IN</Button>
         </Form>
       </Wrapper>

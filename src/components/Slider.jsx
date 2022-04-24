@@ -29,6 +29,16 @@ const Arrow = styled.div`
   right: ${props => props.direction === "right" && "10px"};
   opacity: .6;
   z-index: 10;
+  
+  @media screen and (max-width: 1024px) {
+    width: 30px;
+    height: 30px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
 `
 const Wrapper = styled.div`
   height: 46vw;
@@ -55,9 +65,29 @@ const Image = styled.img`
 const InfoContainer = styled.div`
   flex: 1;
   padding: 50px;
+
+  @media screen and (max-width: 1024px) {
+    padding: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 15px;
+  }
 `
 const Title = styled.h1`
   font-size: 70px;
+
+  @media screen and (max-width: 1024px) {
+   font-size: 38px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 26px;
+  }
+
+  @media screen and (max-width: 540px) {
+    font-size: 16px;
+  }
 `
 const Desc = styled.p`
   margin: 50px 0;
@@ -65,6 +95,24 @@ const Desc = styled.p`
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
+
+  @media screen and (max-width: 1024px) {
+    margin: 30px 0;
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 15px 0 30px;
+    font-size: 14px;
+    letter-spacing: 1.2px;
+  }
+
+  @media screen and (max-width: 540px) {
+    margin: 10px 0 15px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
 `
 
 
