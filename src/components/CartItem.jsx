@@ -16,7 +16,6 @@ const Item = styled.div`
   justify-content: space-between;
   align-items: center;
   border: 2px solid #232323;
-  border-radius: 6px;
   
   a {
     max-height: 160px;

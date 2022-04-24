@@ -35,12 +35,16 @@ const cartSlice = createSlice({
     },
 
     countBill(state, action) {
-      state.bill.items += action.payload.amount
-      state.bill.price += action.payload.price
+      state.bill.items += action.payload.amount;
+      state.bill.price += action.payload.price;
+    },
+
+    increaseAmount(state, action) {
+      state.cartItems.forEach(item => item.name === action.payload.id ? item.amount += action.payload.num : null)
     }
   }
 })
 
-export const { addItem, clearCart, deleteItem, countBill } = cartSlice.actions;
+export const { addItem, clearCart, deleteItem, countBill, increaseAmount } = cartSlice.actions;
 
 export default cartSlice.reducer

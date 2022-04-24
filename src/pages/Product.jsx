@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom'
 import styled from 'styled-components';
 import Newsletter from "../components/Newsletter";
 import Add from '@material-ui/icons/Add';
@@ -147,19 +148,43 @@ const Amount = styled.span`
 
 const Button = styled.button`
   cursor: pointer;
+  min-width: 120px;
   padding: 10px 15px;
-  border: 1px solid teal;
+  color: #232323;
+  border: 2px solid #232323;
   background-color: transparent;
-  font-weight: 500;
+  font-weight: 600;
   transition: background-color .2s ease-in-out, color .3s ease-in-out;
 
   &:hover {
-    background-color: teal;
+    background-color: #232323;
     color: #fff;
   }
 
   &:active {
-    background-color: #005f5f;
+    background-color: #232323;
+  }
+`
+
+const ButtonLink = styled.button`
+  cursor: pointer;
+  min-width: 120px;
+  padding: 10px 15px;
+  border: 2px solid teal;
+  background-color: teal;
+  transition: background-color .2s ease-in-out, color .3s ease-in-out;
+
+  a {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  &:hover {
+    background-color: #fff;
+
+    a {
+      color: #232323;
+    }
   }
 `
 
@@ -168,10 +193,11 @@ export const Product = ({match}) => {
   let location = useLocation();
 
   const dispatch = useDispatch();
-  let category = location.pathname.split('/')[1];
-  let product = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === category)[0][1])[0].filter(elem => elem.id == params.id)[0]);
-
+  const category = location.pathname.split('/')[1];
+  const product = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === category)[0][1])[0].filter(elem => elem.id == params.id)[0]);
+  const cartItems = useSelector(state => state.cart.cartItems)
   const [num, setNum] = useState(1);
+  const [added, setAdded] = useState(false);
   const [color, setColor] = useState(product.colors[0]);
   const [size, setSize] = useState(product.sizes[0]);
   let order = {};
@@ -183,18 +209,19 @@ export const Product = ({match}) => {
     e.preventDefault()
 
     order = {
-      category,
+      amount: num,
       id: product.id,
       img: product.img,
       name: product.name,
-      color: color,
-      price: product.price * num,
-      size: size,
-      amount: num
+      price: Number(product.price * num),
+      color,
+      category,
+      size,
     };
 
     addToCart(order)
     count(order)
+    setAdded(true)
   }
 
   const numHandler = action => {
@@ -202,6 +229,14 @@ export const Product = ({match}) => {
       num < 10 ? setNum(num + 1) : setNum(10)
     } else {
       num > 1 ? setNum(num - 1) : setNum(1)
+    }
+  }
+
+  function isInCart() {
+    if (cartItems.filter(item => item.name === product.name).length || added) {
+      return <ButtonLink><Link to={'/cart'}>GO TO CART</Link></ButtonLink>
+    } else {
+      return <Button onClick={addProduct}>ADD TO CART</Button>
     }
   }
 
@@ -261,7 +296,7 @@ export const Product = ({match}) => {
                 <Amount>{num}</Amount>
                 <Add onClick={() => numHandler("plus")} style={{cursor: "pointer"}}/>
               </AmountContainer>
-              <Button onClick={addProduct}>ADD TO CART</Button>
+              {isInCart()}
             </AddContainer>
           </InfoContainer>
         </Wrapper>

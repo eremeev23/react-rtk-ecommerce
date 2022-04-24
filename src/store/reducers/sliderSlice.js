@@ -10,7 +10,7 @@ const slidesSlice = createSlice({
         title: 'Summer Dress',
         desc: "New summer '21 collection",
         bg: '6c584c',
-        slug: '/clothes/1'
+        slug: '/clothes/summer-dress'
       },
       {
         id: 2,
@@ -18,7 +18,7 @@ const slidesSlice = createSlice({
         title: "Man's jacket",
         desc: "New summer '21 collection",
         bg: '718355',
-        slug: '/clothes/5'
+        slug: '/clothes/jacket'
       },
       {
         id: 3,
@@ -26,7 +26,7 @@ const slidesSlice = createSlice({
         title: "Man's jeans",
         desc: "New summer '21 collection",
         bg: '8f857b',
-        slug: '/clothes/3'
+        slug: '/clothes/jeans'
       },
     ]
   },

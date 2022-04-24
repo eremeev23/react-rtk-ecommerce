@@ -28,3 +28,21 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+.go-to-cart {
+    padding: 10px 15px;
+    color: #232323;
+    border: 2px solid #232323;
+    background-color: transparent;
+    font-weight: 500;
+    transition: background-color .2s ease-in-out, color .3s ease-in-out;
+}
+
+.go-to-cart:hover {
+     background-color: #232323;
+     color: #fff;
+}
+
+.go-to-cart:active {
+     background-color: #232323;
+}

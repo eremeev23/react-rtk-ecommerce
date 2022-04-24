@@ -7,7 +7,6 @@ const Bill = styled.div`
   height: fit-content;
   width: 400px;
   border: 2px solid #232323;
-  border-radius: 6px;
 `
 
 const BillHeader = styled.div`
@@ -77,8 +76,6 @@ const GoToOrder = styled.button`
 const CartItem = () => {
   const delivery = 10;
   const bill = useSelector(state => state.cart.bill)
-
-  console.log(bill)
 
   return (
     <Bill>
