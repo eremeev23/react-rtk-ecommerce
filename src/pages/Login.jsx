@@ -4,6 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import BackButton from "../components/BackButton";
 import SwitchFormButton from "../components/SwitchFormButton";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import VisibilityOn from "@material-ui/icons/Visibility";
 import {useSelector} from "react-redux";
 
 
@@ -170,16 +171,17 @@ export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const [inputType, setInputType] = useState('password');
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const users = useSelector(state => state.user.users.filter(function (item) {
     return item.password === password ?? item.email === email
   }))
-  // const i = useSelector(state => state.user)
 
   const submitForm = e => {
     e.preventDefault();
     emailHandler();
+
     if (!users.length) {
       setEmail('');
       setPassword('');
@@ -190,7 +192,7 @@ export const Login = () => {
   }
 
   function showError() {
-    if (error) {
+    if (emailError) {
       return (
         <ErrorText>
           Wrong email or wrong password. Please try again. Or
@@ -210,6 +212,14 @@ export const Login = () => {
     emailTest(email) ? setEmailError(false) : setEmailError(true)
   }
 
+  function showPassword(e) {
+    e.preventDefault();
+    if (inputType === 'password') {
+      setInputType('text')
+    } else {
+      setInputType('password')
+    }
+  }
 
   return (
     <Container>
@@ -219,18 +229,18 @@ export const Login = () => {
           <SwitchFormButton text="Sign Up" url="/sign-up" />
         </Header>
         <Title>Log in your account</Title>
-        <Form onSubmit={e => submitForm(e)} novalidate >
+        <Form onSubmit={e => submitForm(e)} novalidate="true" >
           <InputWrapper>
-            <Input onChange={e => setEmail(e.target.value)} value={email} type="email" id="email" className="input-email" required/>
+            <Input onChange={e => setEmail(e.target.value)} onInput={() => setEmailError(false) } value={email} type="email" id="email" className="input-email" required/>
             <Label htmlFor="email" className="label-email">
               <span>E-mail</span>
             </Label>
           </InputWrapper>
           <InputWrapper>
-            <Input onChange={e => setPassword(e.target.value)} value={password} type="password" id="password" className="input-pass" minlength="6" required/>
+            <Input onChange={e => setPassword(e.target.value)} value={password} type={inputType} id="password" className="input-pass" minlength="6" required/>
             <Label htmlFor="password" className="label-pass"><span>Password</span></Label>
-            <HideButton>
-              <VisibilityOff />
+            <HideButton onClick={e => showPassword(e)}>
+              { inputType === 'password' ? <VisibilityOff /> : <VisibilityOn /> }
             </HideButton>
           </InputWrapper>
           <Forgot href="#">Forgot password?</Forgot>

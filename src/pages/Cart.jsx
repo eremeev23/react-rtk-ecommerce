@@ -12,15 +12,15 @@ import CartBill from "../components/CartBill";
 import EmptyCart from "../components/EmptyCart";
 
 const HomeBtn = styled.button`
-    margin-top: 15px;
-    margin-left: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    text-decoration: none;
-    color: inherit;
-    border: none;
+  margin-top: 15px;
+  margin-left: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  text-decoration: none;
+  color: inherit;
+  border: none;
   background-color: transparent;
 
     svg {
@@ -57,6 +57,7 @@ const CartWrapper = styled.div`
 const CartItems = styled.div`
   padding-right: 60px;
   width: calc(100% - 420px);
+  max-width: 1000px;
 `
 
 export const Cart = () => {

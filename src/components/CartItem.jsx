@@ -93,7 +93,7 @@ const ItemDelete = styled.button`
   background-color: transparent;
   height: fit-content;
   color: #232323;
-  border: 2px solid #232323;
+  border: none;
   border-radius: 50%;
   transition: background-color .2s ease-in-out, color .2s ease-in-out;
   
