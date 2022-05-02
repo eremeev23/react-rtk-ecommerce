@@ -23,9 +23,14 @@ const HomeBtn = styled.button`
   border: none;
   background-color: transparent;
 
-    svg {
-        margin-right: 7px;
-    }
+  svg {
+      margin-right: 7px;
+  }
+
+  @media screen and (max-width: 540px) {
+    margin-left: 5px;
+    font-size: 16px;
+  }
 `
 
 const CartHeader = styled.div`
@@ -33,6 +38,10 @@ const CartHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
+  @media screen and (max-width: 540px) {
+    padding: 10px;
+  }
 `
 
 const Clear = styled.button`
@@ -45,19 +54,40 @@ const Clear = styled.button`
 `
 
 const Title = styled.h1`
-  
+  @media screen and (max-width: 540px) {
+    font-size: 22px;
+  }
 `
 
 const CartWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
+
+  @media screen and (max-width: 940px) {
+    flex-direction: column-reverse;
+  }
+
+  @media screen and (max-width: 540px) {
+    padding: 0 10px;
+  }
 `
 
 const CartItems = styled.div`
   padding-right: 60px;
   width: calc(100% - 420px);
   max-width: 1000px;
+
+  @media screen and (max-width: 1300px) {
+    padding-right: 20px;
+    width: calc(100% - 400px);
+  }
+
+  @media screen and (max-width: 940px) {
+    box-sizing: border-box;
+    padding-right: 0;
+    width: 100%;
+  }
 `
 
 export const Cart = () => {

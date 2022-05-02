@@ -7,21 +7,51 @@ const Bill = styled.div`
   height: fit-content;
   width: 400px;
   border: 2px solid #232323;
+  
+  @media screen and (max-width: 1300px) {
+    max-width: 280px;
+  }
+
+  @media screen and (max-width: 940px) {
+    box-sizing: border-box;
+    max-width: none;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+
+  @media screen and (max-width: 540px) {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
 `
 
 const BillHeader = styled.div`
   padding-bottom: 10px;
   margin-bottom: 10px;
-  border-bottom: 1px solid #c3c3c3;
+  border-bottom: 2px solid #c3c3c3;
+
+  @media screen and (max-width: 540px) {
+    padding-bottom: 5px;
+  }
 `
 
 const BillTitle = styled.h2`
   margin-bottom: 5px;
   font-weight: 700;
+
+  @media screen and (max-width: 540px) {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
 `
 
 const BillValue = styled.span`
  color: teal;
+
+  @media screen and (max-width: 540px) {
+    font-size: 13px;
+  }
 `
 
 const BillItem = styled.div`
@@ -31,17 +61,29 @@ const BillItem = styled.div`
   
   &:not(:last-child) {
     margin-bottom: 15px;
+
+    @media screen and (max-width: 540px) {
+      margin-bottom: 10px;
+    }
   }
 `
 
 const BillItemName = styled.p`
   font-weight: 500;
   color: #565656;
+
+  @media screen and (max-width: 540px) {
+    font-size: 14px;
+  }
 `
 
 const BillItemValue = styled.p`
   font-size: 17px;
   font-weight: 600;
+
+  @media screen and (max-width: 540px) {
+    font-size: 15px;
+  }
 `
 
 const TotalPriceName = styled.p`
@@ -69,6 +111,12 @@ const GoToOrder = styled.button`
   &:hover {
     color: #232323;
     background-color: #fff;
+  }
+
+  @media screen and (max-width: 540px) {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
   }
 `
 

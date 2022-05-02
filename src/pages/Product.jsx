@@ -18,30 +18,70 @@ const Container = styled.div`
 
 const ContentWrapper = styled.div`
   padding: 15px 50px;
+
+  @media screen and (max-width: 768px) {
+    padding: 10px 20px 30px;
+    max-height: fit-content;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 540px) {
+    padding: 10px 10px 20px;
+  }
 `
 
 const Wrapper = styled.div`
   margin-top: 15px;
   display: flex;
+  
+  @media screen and (max-width: 540px) {
+    flex-direction: column;
+  }
 `
 
 const ImgContainer = styled.div`
-  flex: 1;  
+  flex: 1;
+
+  @media screen and (max-width: 768px) {
+    height: 100%;
+  }
+
+  @media screen and (max-width: 540px) {
+    height: 280px;
+    overflow: hidden;
+  }
 `
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0 50px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 0 0 30px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 540px) {
+    padding: 10px 0;
+  }
 `
 
 const Image = styled.img`
   width: 100%;
   height: 90vh;
   object-fit: cover;
+
+  @media screen and (max-width: 768px) {
+    height: 100%;
+  }
 `
 
 const Title = styled.h1`
   font-weight: 500;
+  
+  @media screen and (max-width: 540px) {
+    font-size: 22px;
+  }
 `
 
 const Desc = styled.p`
@@ -49,11 +89,25 @@ const Desc = styled.p`
   font-size: 18px;
   line-height: 140%;
   letter-spacing: .3px;
+
+  @media screen and (max-width: 540px) {
+    margin: 10px 0 15px;
+    font-size: 14px;
+  }
 `
 
 const Price = styled.span`
   font-weight: 100;
   font-size: 40px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 28px;
+  }
+
+  @media screen and (max-width: 540px) {
+    font-size: 18px;
+    font-weight: 400;
+  }
 `
 
 const FilterContainer = styled.div`
@@ -61,6 +115,10 @@ const FilterContainer = styled.div`
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const Filter = styled.div`
@@ -72,6 +130,10 @@ const FilterTitle = styled.span`
   margin-right: 5px;
   font-size: 20px;
   font-weight: 200;
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
 `
 
 const FilterColor = styled.input`
@@ -116,6 +178,10 @@ const FilterSize = styled.select`
   padding: 5px;
   border: none;
   border-bottom: 2px solid #393939;
+
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
 `
 
 const FilterSizeOption = styled.option``
@@ -126,6 +192,10 @@ const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const AmountContainer = styled.div`

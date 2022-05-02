@@ -6,9 +6,7 @@ const announcementState = createSlice({
     announcement: true
   },
   reducers: {
-    closeAnnouncement(state, action) {
-      console.log(action);
-
+    closeAnnouncement(state) {
       state.announcement = false;
     }
   }

@@ -20,10 +20,31 @@ const Item = styled.div`
   a {
     max-height: 160px;
   }
+
+  @media screen and (max-width: 1024px) {
+    padding: 10px;
+  }
+
+  @media screen and (max-width: 940px) {
+    box-sizing: border-box;
+  }
+
+  @media screen and (max-width: 540px) {
+    height: fit-content;
+    padding: 10px 0;
+  }
 `
 
 const Image = styled.img`
   height: 160px;
+
+  @media screen and (max-width: 940px) {
+    height: 140px;
+  }
+
+  @media screen and (max-width: 540px) {
+    display: none;
+  }
 `
 
 const ItemInfo = styled.div`
@@ -32,11 +53,23 @@ const ItemInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media screen and (max-width: 540px) {
+    margin-left: 10px;
+  }
 `
 
 const ItemName = styled.p`
   font-size: 26px;
   font-weight: 700;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 540px) {
+    font-size: 18px;
+  }
 `
 
 const ItemColor = styled.span`
@@ -56,14 +89,35 @@ const ItemColor = styled.span`
     border: 2px solid #232323;
     background-color: ${props => props.color};
   }
+
+  @media screen and (max-width: 540px) {
+    margin-top: 10px;
+    font-size: 14px;
+
+    &::before {
+      width: 12px;
+      height: 12px;
+      left: 40px;
+    }
+  }
 `
 
-const ItemSize = styled.span``
+const ItemSize = styled.span`
+  @media screen and (max-width: 540px) {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+`
 
 const ItemPrice = styled.div`
   margin-top: 30px;
   font-size: 22px;
   font-weight: 500;
+
+  @media screen and (max-width: 540px) {
+    margin-top: 14px;
+    font-size: 16px;
+  }
 `
 
 const ItemAmount = styled.div`
@@ -72,6 +126,14 @@ const ItemAmount = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: 700;
+
+  @media screen and (max-width: 1024px) {
+    flex: auto;
+  }
+
+  @media screen and (max-width: 540px) {
+    font-size: 14px;
+  }
 `
 
 const Amount = styled.span`
@@ -84,6 +146,11 @@ const Amount = styled.span`
   height: 34px;
   border-radius: 50%;
   border: 1px solid teal;
+
+  @media screen and (max-width: 540px) {
+    width: 24px;
+    height: 24px;
+  }
 `
 
 const ItemDelete = styled.button`
@@ -100,6 +167,10 @@ const ItemDelete = styled.button`
   &:hover {
     color: #f1f1f1;
     background-color: #232323;
+  }
+
+  @media screen and (max-width: 1024px) {
+    margin-left: 0;
   }
 `
 
