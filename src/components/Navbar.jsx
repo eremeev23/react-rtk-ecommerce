@@ -103,21 +103,11 @@ const MenuItem = styled.div`
 
 const Navbar = () => {
   const cartAmount = useSelector(state => state.cart.cartItems.length);
+  const user = useSelector(state => state.user.logedUser);
 
-  return (
-    <Header>
-      <Wrapper>
-        <Left>
-          <SearchContainer>
-            <Input />
-            <SearchIcon style={{color: "gray", fontSize: 18}}/> 
-          </SearchContainer>
-        </Left>
-        <Center>
-          <Logo>
-            <Link to="/">EL MODO.</Link>
-          </Logo>
-        </Center>
+  function userInfo() {
+    if (!user) {
+      return (
         <Right>
           <MenuItem>
             <Link to="/sign-up">SIGN UP</Link>
@@ -133,6 +123,44 @@ const Navbar = () => {
             </Link>
           </MenuItem>
         </Right>
+      )
+    } else {
+      return (
+        <Right>
+          <MenuItem>
+            <Link to="/account">
+              {user.name}
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/cart">
+              <Badge badgeContent={cartAmount} color="primary">
+                <ShoppingCartIcon />
+              </Badge>
+            </Link>
+          </MenuItem>
+        </Right>
+      )
+    }
+  }
+
+  return (
+    <Header>
+      <Wrapper>
+        <Left>
+          <SearchContainer>
+            <Input />
+            <SearchIcon style={{color: "gray", fontSize: 18}}/> 
+          </SearchContainer>
+        </Left>
+        <Center>
+          <Logo>
+            <Link to="/">EL MODO.</Link>
+          </Logo>
+        </Center>
+        {
+          userInfo()
+        }
       </Wrapper>  
     </Header>
   )

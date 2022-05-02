@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import BackButton from "../components/BackButton";
 import SwitchFormButton from "../components/SwitchFormButton";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import VisibilityOn from "@material-ui/icons/Visibility";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {LOG_IN} from "../store/reducers/userSlice";
 
 
 const fadeIn = keyframes`
@@ -93,13 +94,13 @@ const Input = styled.input`
   outline: none;
   background-color: transparent;
 
-  &:focus ~ label {
+  &:focus ~ label, &.valid ~ label {
     bottom: 80%;
     font-size: 12px;
     opacity: 1;
   }
 
-  &:valid ~ label {
+  &:valid ~ label, &.valid ~ label {
     bottom: 80%;
     font-size: 12px;
     opacity: 1;
@@ -170,24 +171,31 @@ const ErrorText = styled.p`
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(false);
   const [inputType, setInputType] = useState('password');
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const users = useSelector(state => state.user.users.filter(function (item) {
+
+  const navigate = useNavigate()
+
+  const user = useSelector(state => state.user.users.filter(function (item) {
     return item.password === password ?? item.email === email
   }))
+  const dispatch = useDispatch()
 
-  const submitForm = e => {
+  const login = userInfo => dispatch(LOG_IN(userInfo))
+
+  function submitForm(e) {
     e.preventDefault();
     emailHandler();
 
-    if (!users.length) {
+    if (!user.length) {
+      setEmailError(true)
+    } else {
       setEmail('');
       setPassword('');
-      setError(true)
-    } else {
-      setError(false)
+      setEmailError(false);
+      navigate('/');
+      login(user[0])
     }
   }
 
@@ -214,6 +222,7 @@ export const Login = () => {
 
   function showPassword(e) {
     e.preventDefault();
+
     if (inputType === 'password') {
       setInputType('text')
     } else {
@@ -231,7 +240,7 @@ export const Login = () => {
         <Title>Log in your account</Title>
         <Form onSubmit={e => submitForm(e)} novalidate="true" >
           <InputWrapper>
-            <Input onChange={e => setEmail(e.target.value)} onInput={() => setEmailError(false) } value={email} type="email" id="email" className="input-email" required/>
+            <Input onChange={e => setEmail(e.target.value)} onInput={() => setEmailError(false) } value={email} type="email" id="email" className={email ? 'valid input-email' : 'input-email'} required/>
             <Label htmlFor="email" className="label-email">
               <span>E-mail</span>
             </Label>

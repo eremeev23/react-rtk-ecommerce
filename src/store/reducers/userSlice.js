@@ -10,21 +10,25 @@ const userSlice = createSlice({
         email: "test@mail.com",
         password: "123123"
       }
-    ]
+    ],
+    logedUser: false
   },
   reducers: {
-    signUp(state, action) {
+    SIGN_UP(state, action) {
       state.users.push({
         id: new Date().toISOString(),
         name: action.payload.name,
-        lastName: action.payload.lastName,
         email: action.payload.email,
         password: action.payload.password
       })
+    },
+
+    LOG_IN(state, action) {
+      state.logedUser = action.payload
     }
   }
 })
 
-export const { signUp } = userSlice.actions;
+export const { SIGN_UP, LOG_IN } = userSlice.actions;
 
 export default userSlice.reducer

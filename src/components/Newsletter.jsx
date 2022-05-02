@@ -10,6 +10,12 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 60vh;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px 20px 80px;
+    height: fit-content;
+    justify-content: flex-start;
+  }
 `
 
 const Title = styled.h2`
@@ -18,6 +24,19 @@ const Title = styled.h2`
 
   &.hidden {
     display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 48px;
+    margin-bottom: 15px;
+  }
+
+  @media screen and (max-width: 550px) {
+    font-size: 36px;
+    margin-bottom: 10px;
   }
 `
 
@@ -29,6 +48,15 @@ const Description = styled.div`
 
   &.hidden {
     display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media screen and (max-width: 550px) {
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 `
 
@@ -44,6 +72,11 @@ const Form = styled.form`
   &.hidden {
     display: none;
   }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 36px;
+  }
 `
 
 const Input = styled.input`
@@ -52,6 +85,10 @@ const Input = styled.input`
   font-size: 18px;
   border: none;
   outline: none;
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
 `
 
 const error = keyframes`
@@ -117,6 +154,20 @@ const Policy = styled.p`
     color: teal;
     font-weight: 700;
   }
+  
+  @media screen and (max-width: 1100px) {
+    bottom: -60px;
+  }
+
+  @media screen and (max-width: 768px) {
+    bottom: -40px;
+    font-size: 13px;
+  }
+
+  @media screen and (max-width: 550px) {
+    bottom: -62px;
+    line-height: 110%;
+  }
 `
 
 const Success = styled.div`
@@ -131,6 +182,13 @@ const Success = styled.div`
 
   &.success {
     display: block;
+  }
+  
+  @media screen and (max-width: 768px) {
+    svg {
+      width: 40px;
+      height: 40px;
+    }
   }
 `
 

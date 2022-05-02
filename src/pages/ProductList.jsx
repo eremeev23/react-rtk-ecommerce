@@ -13,20 +13,20 @@ const Container = styled.div`
 `
 
 const HomeBtn = styled.button`
-    margin-top: 15px;
-    margin-left: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    text-decoration: none;
-    color: inherit;
-    border: none;
+  margin-top: 15px;
+  margin-left: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  text-decoration: none;
+  color: inherit;
+  border: none;
   background-color: transparent;
 
-    svg {
-        margin-right: 7px;
-    }
+  svg {
+      margin-right: 7px;
+  }
 `
 
 const Title = styled.h1`

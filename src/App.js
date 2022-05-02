@@ -10,6 +10,7 @@ import { Login } from './pages/Login';
 import { PageNotFound } from './pages/PageNotFound';
 import { Policy } from './pages/Policy';
 import { Cart } from './pages/Cart';
+import { Account } from './pages/Account';
 
 const ModalContent = styled.div`
   padding: 20px;
@@ -100,6 +101,7 @@ function App() {
           <Route path="/log-in" element={<Login />} />
           <Route path="/policy" element={<Policy />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/account" element={<Account />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
     </div>

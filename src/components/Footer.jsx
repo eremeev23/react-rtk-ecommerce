@@ -14,6 +14,16 @@ const Container = styled.footer`
   display: flex;
   background-color: #1f1f1f;
   color: #f1f1f1;
+  
+  @media screen and (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 20px;
+  }
+
+  @media screen and (max-width: 540px) {
+    grid-template-columns: 1fr;
+  } 
 `
 
 const Left = styled.div`
@@ -21,6 +31,14 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px 0;
+  }
+
+  @media screen and (max-width: 540px) {
+    padding: 15px 0;
+  }
 `
 
 const Logo = styled.h2`
@@ -29,10 +47,19 @@ const Logo = styled.h2`
   a:hover {
     color: teal;
   }
+
+  @media screen and (max-width: 768px) {
+    font-size: 28px;
+  }
 `
 
 const Desc = styled.p`
   margin: 20px 0;
+
+  @media screen and (max-width: 768px) {
+    margin: 10px 0;
+    font-size: 14px;
+  } 
 `
 
 const SocialContainer = styled.div`
@@ -50,15 +77,34 @@ const SocialIcon = styled.a`
   border-radius: 50%;
   color: #fff;
   background-color: #${props => props.color};
+
+  @media screen and (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-right: 20px;
+  }
 `
 
 const Center = styled.div`
   flex: 1;
   padding: 20px;
+
+  @media screen and (max-width: 768px) {
+    padding: 15px 0;
+  }
 `
 
 const Title = styled.h3`
   margin-bottom: 30px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
 `
 
 const List = styled.ul`
@@ -82,6 +128,16 @@ const ListItem = styled.li`
       color: teal;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 7px;
+    width: 44%;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 540px) {
+    width: 50%;
+  }
 `
 
 const Right = styled.div`
@@ -95,6 +151,11 @@ const ContactItem = styled.a`
   align-items: center;
   text-decoration: none;
   color: inherit;
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
 `
 
 const Payment = styled.img`
