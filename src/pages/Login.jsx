@@ -45,6 +45,12 @@ const Wrapper = styled.div`
   padding: 15px 30px 30px;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(15px);
+  
+  @media screen and (max-width: 540px) {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+  }
 `
 
 const Header = styled.div`
@@ -91,6 +97,7 @@ const Input = styled.input`
   font-size: 16px;
   border: none;
   border-bottom: 2px solid #232323;
+  border-radius: 0;
   outline: none;
   background-color: transparent;
 

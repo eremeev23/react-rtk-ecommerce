@@ -43,6 +43,12 @@ const Wrapper = styled.div`
   padding: 15px 30px 30px;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(15px);
+
+  @media screen and (max-width: 540px) {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+  }
 `
 
 const Header = styled.div`
@@ -180,9 +186,6 @@ export const SignUp = () => {
 
   const signUp = user => dispatch(SIGN_UP(user));
   const login = userInfo => dispatch(LOG_IN(userInfo));
-
-  // This field must be the same as Password
-  // Enter a secure password: At least 8 characters long
 
   const emailHandler = e => {
     setEmail(e.target.value);

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 const Container = styled.div`
@@ -13,7 +14,6 @@ const Container = styled.div`
 
   &:hover {
     background-color: rgba(0, 128, 128, 0.4);
-    //background-color: #f1f1f1;
   }
 `
 
@@ -59,28 +59,41 @@ const Color = styled.input`
     background-color: ${props => props.color};
 `
 
-const Product = ({item}) => {
-    return (
-        <Container>
-          <Link to={`${item.id}`}>
-            <Image src={item.img}/>
-          </Link>
+const FavoriteButton = styled.div`
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+`
 
-          <Name>
-            <Link to={`${item.id}`}>
-              {item.name}
-            </Link>
-          </Name>
-          <Price>{item.price} $ </Price>
-          <Colors>
-            {item.colors.map((elem, id) => {
-              return (
-                <Color type="radio" name="color" id={id} value={elem} color={elem} key={id} />
-              )
-            })}
-          </Colors>
-        </Container>
-    );
+const Product = ({item}) => {
+  const [favorite, setFavorite] = useState(false)
+
+  return (
+    <Container>
+      <Link to={`${item.id}`}>
+        <Image src={item.img}/>
+      </Link>
+
+      <Name>
+        <Link to={`${item.id}`}>
+          {item.name}
+        </Link>
+      </Name>
+      <Price>{item.price} $ </Price>
+      <Colors>
+        {item.colors.map((elem, id) => {
+          return (
+            <Color type="radio" name="color" id={id} value={elem} color={elem} key={id} />
+          )
+        })}
+      </Colors>
+
+      <FavoriteButton onClick={() => setFavorite(!favorite)}>
+        {!favorite ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon /> }
+      </FavoriteButton>
+    </Container>
+  );
 };
 
 export default Product;

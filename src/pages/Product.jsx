@@ -264,7 +264,7 @@ export const Product = ({match}) => {
 
   const dispatch = useDispatch();
   const category = location.pathname.split('/')[1];
-  const product = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === category)[0][1])[0].filter(elem => elem.id == params.id)[0]);
+  const product = useSelector(state => Object.values(Object.entries(state).filter(item => item[0] === category)[0][1])[0].filter(elem => elem.id === params.id)[0]);
   const cartItems = useSelector(state => state.cart.cartItems)
   const [num, setNum] = useState(1);
   const [added, setAdded] = useState(false);
