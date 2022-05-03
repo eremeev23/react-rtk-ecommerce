@@ -173,7 +173,6 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [inputType, setInputType] = useState('password');
   const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
 
   const navigate = useNavigate()
 

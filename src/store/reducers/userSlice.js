@@ -5,7 +5,7 @@ const userSlice = createSlice({
   initialState: {
     users: [
       {
-        id: 1,
+        id: '1',
         name: "Maxim",
         email: "test@mail.com",
         password: "123123"
@@ -16,7 +16,7 @@ const userSlice = createSlice({
   reducers: {
     SIGN_UP(state, action) {
       state.users.push({
-        id: new Date().toISOString(),
+        id: action.payload.id,
         name: action.payload.name,
         email: action.payload.email,
         password: action.payload.password
